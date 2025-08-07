@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      find the lagest and smallest values form array entered by user
+    </title>
+  </head>
+  <body>
+    <fieldset>
+      <legend>Input values and display information!</legend>
+      <form action="#" method="get">
+        <input type="number" id="inputArray" />
+        <button onclick="addData()">Add</button>
+        <button onclick="display()">Display</button>
+        <p id="Result"></p>
+        <br /><br />
+        <p id="max"></p>
+      </form>
+    </fieldset>
+    <script>
+      var array = [];
+      var x = 0;
+      function addData() {
+        array[x] = document.getElementById("inputArray").value;
+        x++;
+
+        document.getElementById("inputArray").value = "";
+      }
+
+      function display() {
+        var k = "</hr>";
+        for (let i = 0; i < array.length; i++) {
+          k += array[i] + "&nbsp;" + "&nbsp;";
+          document.getElementById("Result").innerHTML = k;
+        }
+        let max = Math.max(...array);
+        document.getElementById("max").innerHTML = max;
+      }
+
+      function keyenter(event) {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          addData();
+        }
+        document
+          .getElementById("inputArray")
+          .addEventListener("keydown", keyenter);
+      }
+    </script>
+  </body>
+</html>
